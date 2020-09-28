@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import Contact from './ContactComponent';
+import AboutUs from "./AboutComponent";
 import DishDetail from './DishDetailComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
@@ -10,12 +11,9 @@ import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
 import { Switch, Route, Redirect } from 'react-router-dom';
-
 class Main extends Component {
-
     constructor(props) {
         super(props);
-
         this.state = {
             dishes: DISHES,
             comments: COMMENTS,
@@ -50,6 +48,7 @@ class Main extends Component {
                     <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
                     <Route path="/menu/:dishId" component={DishWithId} />
                     <Route exact path='/contactus' component={Contact} />} />
+                    <Route path="/aboutus" component={() => <AboutUs leaders={this.state.leaders} />} />
                     <Redirect to="/home" />
                 </Switch>
                 <Footer />

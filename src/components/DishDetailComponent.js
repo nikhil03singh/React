@@ -13,7 +13,6 @@ function RenderDish({ dish }) {
         </Card>
     );
 }
-
 function RenderComments({ comments }) {
     var commentList = comments.map(comment => {
         return (
@@ -25,7 +24,6 @@ function RenderComments({ comments }) {
             </li>
         );
     });
-
     return (
         <div>
             <h4>Comments</h4>
@@ -35,7 +33,6 @@ function RenderComments({ comments }) {
         </div>
     );
 }
-
 const DishDetail = (props) => {
     if (props.dish) {
         return (
