@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, Row, Col, Label } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, Form, Errors, actions } from 'react-redux-form';
-
+import { Control, Form, Errors } from 'react-redux-form'
 const required = (val) => val && val.length;
-const maxLength = (len) => (val) => !(val) || (val.length <= len);
-const minLength = (len) => (val) => val && (val.length >= len);
-const isNumber = (val) => !isNaN(Number(val));
+const maxLength = (len) => (val) => !(val) || (val.length <= len)
+const minLength = (len) => (val) => (val) && (val.length >= len)
+const isNumber = (val) => !isNaN(Number(val))
 const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
-
 class Contact extends Component {
-
     constructor(props) {
         super(props);
-
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -21,7 +17,6 @@ class Contact extends Component {
         console.log("Submitting feedback: " + JSON.stringify(values))
         this.props.postFeedback(values);
         this.props.resetFeedbackForm();
-        // event.preventDefault();
     }
 
     render() {
@@ -29,7 +24,7 @@ class Contact extends Component {
             <div className="container">
                 <div className="row">
                     <Breadcrumb>
-                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>Contact Us</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
@@ -58,16 +53,17 @@ class Contact extends Component {
                     <div className="col-12 col-sm-11 offset-sm-1">
                         <div className="btn-group" role="group">
                             <a role="button" className="btn btn-primary" href="tel:+85212345678"><i className="fa fa-phone"></i> Call</a>
-                            <a role="button" className="btn btn-info"><i className="fa fa-skype"></i> Skype</a>
+                            <a role="button" className="btn btn-info" href="skype:MySkypeName?call"><i className="fa fa-skype"></i> Skype</a>
                             <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
                         </div>
                     </div>
                 </div>
                 <div className="row row-content">
                     <div className="col-12">
-                        <h3>Send Us your Feedback</h3>
+                        <h3>Send us your feedback</h3>
                     </div>
                     <div className="col-12 col-md-9">
+                        {/* An example of a controlled form in React (see HeaderComponent.js for uncontrolled form) */}
                         <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
@@ -86,7 +82,7 @@ class Contact extends Component {
                                         messages={{
                                             required: 'Required',
                                             minLength: 'Must be greater than 2 characters',
-                                            maxLength: 'Must be 15 characters or less'
+                                            maxLength: 'Must be 15 characters or less',
                                         }}
                                     />
                                 </Col>
@@ -108,7 +104,7 @@ class Contact extends Component {
                                         messages={{
                                             required: 'Required',
                                             minLength: 'Must be greater than 2 characters',
-                                            maxLength: 'Must be 15 characters or less'
+                                            maxLength: 'Must be 15 characters or less',
                                         }}
                                     />
                                 </Col>
@@ -139,7 +135,7 @@ class Contact extends Component {
                             <Row className="form-group">
                                 <Label htmlFor="email" md={2}>Email</Label>
                                 <Col md={10}>
-                                    <Control.text model=".email" id="email" name="email"
+                                    <Control.text model=".email" type="tel" id="email" name="email"
                                         placeholder="Email"
                                         className="form-control"
                                         validators={{
@@ -152,7 +148,7 @@ class Contact extends Component {
                                         show="touched"
                                         messages={{
                                             required: 'Required',
-                                            validEmail: 'Invalid Email Address'
+                                            validEmail: 'Invalid email address'
                                         }}
                                     />
                                 </Col>
@@ -198,5 +194,4 @@ class Contact extends Component {
         );
     }
 }
-
 export default Contact;
