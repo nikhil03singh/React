@@ -149,6 +149,7 @@ function RenderComments({ comments, postComment, dishId }) {
             </Stagger>
         );
     });
+
     return (
         <div>
             <h4>Comments</h4>
@@ -170,6 +171,7 @@ const DishDetail = (props) => {
             </div>
         );
     }
+
     else if (props.errMess) {
         return (
             <div className="container">
@@ -179,6 +181,7 @@ const DishDetail = (props) => {
             </div>
         );
     }
+
     else if (props.dish != null) {
         return (
             <div className="container">
@@ -202,6 +205,7 @@ const DishDetail = (props) => {
             </div>
         );
     }
+
     else {
         return (
             <div></div>
